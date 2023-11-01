@@ -6,6 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Scanner;
+
 @SpringBootApplication
 public class VicJensApplication implements CommandLineRunner {
 
@@ -20,5 +22,31 @@ public class VicJensApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception{
 		String say = contactService.say();
 		System.out.println(say);
+
+		Scanner scanner = new Scanner(System.in);
+		String input;
+
+
+
+		while (true) {
+			System.out.print("> ");
+			input = scanner.nextLine();
+
+			if (input.equals("QUIT")) {
+				break;
+			}
+
+			evaluate(input);
+		}
+
+		scanner.close();
+
+
+
+	}
+
+	public static void evaluate(String input) {
+		// 在这里执行输入命令的逻辑
+		System.out.println("执行命令: " + input);
 	}
 }
